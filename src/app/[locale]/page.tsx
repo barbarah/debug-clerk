@@ -1,26 +1,29 @@
-import { useTranslations } from 'next-intl';
-import { OrganizationSwitcher, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Link } from '@/navigation';
+import { getTranslations } from 'next-intl/server';
+import Client from "./client";
 
-export default function Home() {
-  const t = useTranslations('Index');
+export default async function Home() {
+  const t = await getTranslations('Index');
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col p-24 max-w-md">
       <div>
-      <div>
-        <SignedIn>
-          <UserButton afterSignOutUrl="/" />
-          <OrganizationSwitcher />
-        </SignedIn>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
+        <div>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+        </div>
+        <div>
+          <h3>Change language</h3>
+          <Link href="/" locale='en'>English</Link> |
+          <Link href="/" locale='nl'>Dutch</Link>
+        </div>
       </div>
-      <div>
-        <h1>Change language</h1>
-      </div>
-      <h1>{t('title')}</h1>
-      </div>
+      <Client />
     </main>
   );
 }

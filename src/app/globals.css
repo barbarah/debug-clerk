@@ -31,3 +31,26 @@ body {
     text-wrap: balance;
   }
 }
+
+a {
+  color: blue;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
