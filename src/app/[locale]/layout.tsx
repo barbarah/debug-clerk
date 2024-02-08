@@ -1,3 +1,5 @@
+import { ClerkProvider } from '@clerk/nextjs'
+
 export default function LocaleLayout({
   children,
   params: {locale}
@@ -6,8 +8,10 @@ export default function LocaleLayout({
   params: {locale: string};
 }) {
   return (
-    <html lang={locale}>
-      <body>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang={locale}>
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
